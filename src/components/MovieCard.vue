@@ -1,12 +1,17 @@
 <template>
   <div class="movie-card">
-    <div class="movie-poster">
+    <div class="movie-poster" @click="$emit('watch-trailer', movie)">
       <img :src="movie.poster" :alt="movie.title" />
       <div class="rating">{{ movie.rating }}</div>
+      <div class="play-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </div>
     </div>
     <div class="movie-info">
       <h3 class="movie-title">{{ movie.title }}</h3>
-      <button class="buy-button">Buy Tickets</button>
+      <button class="buy-button" @click="$emit('buy-tickets', movie)">Buy Tickets</button>
     </div>
   </div>
 </template>
@@ -18,6 +23,8 @@ defineProps({
     required: true
   }
 })
+
+defineEmits(['buy-tickets', 'watch-trailer'])
 </script>
 
 <style scoped>
@@ -40,6 +47,7 @@ defineProps({
   padding-bottom: 150%;
   overflow: hidden;
   background: #f0f0f0;
+  cursor: pointer;
 }
 
 .movie-poster img {
@@ -49,18 +57,38 @@ defineProps({
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.rating {
+.movie-poster:hover img {
+  transform: scale(1.05);
+}
+
+.play-icon {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  background-color: rgba(0, 0, 0, 0.7);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background-color: rgba(249, 44, 29, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.movie-poster:hover .play-icon {
+  opacity: 1;
+}
+
+.play-icon svg {
+  width: 28px;
+  height: 28px;
+  margin-left: 4px;
 }
 
 .movie-info {
@@ -79,7 +107,7 @@ defineProps({
 .buy-button {
   width: 100%;
   padding: 0.75rem;
-  background-color: #E63946;
+  background-color: rgb(249, 44, 29);
   color: white;
   border: none;
   border-radius: 4px;

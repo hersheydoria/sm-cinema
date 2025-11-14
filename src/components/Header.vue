@@ -7,12 +7,11 @@
           <span class="logo-text">SMCINEMA</span>
         </div>
         <nav class="nav">
-          <a href="#" class="nav-link">Home</a>
-          <a href="#" class="nav-link">Movies</a>
-          <a href="#" class="nav-link">Cinemas</a>
-          <a href="#" class="nav-link">Events & Experiences</a>
-          <a href="#" class="nav-link">Loyalty</a>
-          <a href="#" class="nav-link">Shop</a>
+          <button @click="$emit('navigate', 'home')" :class="{ active: currentPage === 'home' }" class="nav-link">Home</button>
+          <button @click="$emit('navigate', 'cinemas')" :class="{ active: currentPage === 'cinemas' }" class="nav-link">Cinemas</button>
+          <button @click="$emit('navigate', 'events')" :class="{ active: currentPage === 'events' }" class="nav-link">Events & Experiences</button>
+          <button @click="$emit('navigate', 'loyalty')" :class="{ active: currentPage === 'loyalty' }" class="nav-link">Loyalty</button>
+          <button @click="$emit('navigate', 'shop')" :class="{ active: currentPage === 'shop' }" class="nav-link">Shop</button>
         </nav>
       </div>
     </div>
@@ -20,11 +19,15 @@
 </template>
 
 <script setup>
+import { inject } from 'vue'
+
+defineEmits(['navigate'])
+const currentPage = inject('currentPage', { value: 'home' })
 </script>
 
 <style scoped>
 .header {
-  background-color: #E63946;
+  background-color: rgb(211, 46, 34);
   padding: 1rem 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -61,7 +64,7 @@
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  color: #E63946;
+  color: red;
   font-size: 0.9rem;
 }
 
@@ -84,10 +87,22 @@
   font-weight: 500;
   font-size: 0.95rem;
   transition: opacity 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-family: inherit;
+  position: relative;
 }
 
 .nav-link:hover {
   opacity: 0.8;
+}
+
+.nav-link.active {
+  font-weight: 700;
+  border-bottom: 3px solid white;
+  padding-bottom: 0.2rem;
 }
 
 @media (max-width: 768px) {
