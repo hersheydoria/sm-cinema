@@ -19,33 +19,22 @@
           </div>
         </div>
 
-        <div class="imax-banner">
+        <div
+          class="imax-banner"
+          @mouseenter="pauseBannerRotation"
+          @mouseleave="resumeBannerRotation"
+        >
+          <img :src="currentBanner" alt="Cinema banner" class="imax-image">
           <div class="imax-content">
-            <div class="imax-logo">IMAX</div>
-            <h3>FILMS TO THE<br>FULLEST</h3>
+            <div class="imax-logo"></div>
           </div>
-          <img src="https://via.placeholder.com/400x200?text=IMAX+Experience" alt="IMAX Experience" class="imax-image">
         </div>
       </div>
 
-      <!-- Loyalty Card Section -->
-      <div v-if="!showDirectorsClubForm" class="loyalty-card-section">
-        <div class="card-content">
-          <div class="card-image">
-            <div class="smcinema-card">
-              <div class="card-logo">SM<br>CINEMA</div>
-              <div class="card-name">SM CINEMA</div>
-            </div>
-          </div>
-          
-          <div class="card-text">
-            <h2>Enjoy perks and privileges<br><span class="when-you">when you sign up</span></h2>
-          </div>
-
-          <div class="qr-code">
-            <img src="https://via.placeholder.com/150x150?text=QR+Code" alt="QR Code" class="qr-image">
-            <p class="scan-text">SCAN TO SIGN UP</p>
-          </div>
+      <!-- Loyalty Banner Section -->
+      <div v-if="!showDirectorsClubForm" class="loyalty-banner-section">
+        <div class="loyalty-banner">
+          <img :src="loyaltyBannerImage" alt="Loyalty banner" class="loyalty-banner-image" />
         </div>
       </div>
 
@@ -102,7 +91,6 @@
             <input 
               type="password" 
               v-model="loginData.password"
-              placeholder="Password" 
               required
               class="form-input"
             />
@@ -132,7 +120,8 @@
                   <input type="text" id="firstname" v-model="directorsClubData.firstName" required>
                 </div>
                 <div class="form-group">
-                  <label for="lastname">Last Name<span class="required">*</span></label>
+                border-radius: 0;
+                box-shadow: none;
                   <input type="text" id="lastname" v-model="directorsClubData.lastName" required>
                 </div>
               </div>
@@ -643,7 +632,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import PickTicketsModal from './PickTicketsModal.vue'
 
 const emit = defineEmits(['navigate'])
@@ -679,6 +668,42 @@ const directorsClubData = ref({
   password: '',
   confirmPassword: '',
   agreeToTerms: false
+})
+
+const cinemaBanners = [
+  new URL('../assets/Banners/Cinema_Banners/banner_1.jpeg', import.meta.url).href,
+  new URL('../assets/Banners/Cinema_Banners/banner_2.jpg', import.meta.url).href,
+  new URL('../assets/Banners/Cinema_Banners/banner_3.jpg', import.meta.url).href,
+  new URL('../assets/Banners/Cinema_Banners/banner_4.jpeg', import.meta.url).href
+]
+const loyaltyBannerImage = new URL('../assets/Banners/Loyalty_Banners/Pic_1.jpg', import.meta.url).href
+const currentBannerIndex = ref(0)
+const currentBanner = computed(() => cinemaBanners[currentBannerIndex.value])
+let bannerInterval = null
+
+const rotateBanner = () => {
+  currentBannerIndex.value = (currentBannerIndex.value + 1) % cinemaBanners.length
+}
+
+const pauseBannerRotation = () => {
+  if (bannerInterval) {
+    clearInterval(bannerInterval)
+    bannerInterval = null
+  }
+}
+
+const resumeBannerRotation = () => {
+  if (!bannerInterval) {
+    bannerInterval = setInterval(rotateBanner, 5000)
+  }
+}
+
+onMounted(() => {
+  resumeBannerRotation()
+})
+
+onBeforeUnmount(() => {
+  pauseBannerRotation()
 })
 
 const openSignUpForm = () => {
@@ -777,129 +802,112 @@ const handleLogin = () => {
 }
 
 .imax-banner {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 1rem;
-  border-radius: 4px;
   position: relative;
   overflow: hidden;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .imax-content {
+  position: absolute;
+  inset: 1.5rem;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  z-index: 1;
+  gap: 0.5rem;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
 .imax-logo {
   color: #00a8ff;
   font-weight: 700;
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
 }
 
 .imax-content h3 {
   color: white;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 .imax-image {
-  width: 100%;
+  width: 120%;
   height: auto;
-  border-radius: 4px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  margin-left: -10%;
 }
 
-/* Loyalty Card Section */
-.loyalty-card-section {
-  background-color: #0052cc;
-  padding: 3rem;
-  border-radius: 8px;
+/* Loyalty Banner Section */
+.loyalty-banner-section {
   margin-bottom: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
 }
 
-.card-content {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 3rem;
-  align-items: center;
+.loyalty-banner {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.loyalty-banner-image {
   width: 100%;
-}
-
-.card-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 1000px;
-}
-
-.smcinema-card {
-  width: 200px;
-  height: 120px;
-  background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
-  border-radius: 8px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  transform: rotateY(-15deg);
-}
-
-.card-logo {
-  color: #ffd700;
-  font-weight: 700;
-  font-size: 1.1rem;
-  line-height: 1.3;
-}
-
-.card-name {
-  color: white;
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-align: right;
-}
-
-.card-text h2 {
-  color: white;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.3;
-  margin: 0;
-}
-
-.when-you {
-  color: #ffd700;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
-.qr-code {
+.loyalty-banner-content {
+  position: absolute;
+  inset: 1.5rem;
+  color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 0.5rem;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
 }
 
-.qr-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 4px;
-  background-color: white;
-  padding: 0.5rem;
+.loyalty-banner-content .badge {
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
 }
 
-.scan-text {
-  color: #ffd700;
+.loyalty-banner-content h2 {
+  font-size: 2.1rem;
   font-weight: 700;
-  font-size: 0.9rem;
   margin: 0;
+}
+
+.loyalty-banner-content span {
+  color: #ffd700;
+}
+
+.loyalty-banner-content .subtext {
+  font-size: 1rem;
+  max-width: 420px;
+  margin: 0;
+}
+
+.loyalty-learn-btn {
+  align-self: flex-start;
+  padding: 0.75rem 2rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.loyalty-learn-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Action Section */

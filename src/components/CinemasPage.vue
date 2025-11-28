@@ -98,12 +98,14 @@
             <button class="banner-btn" @click="openPickMoviesModal('TIME')">PICK A<br>TIME</button>
           </div>
         </div>
-        <div class="banner-right">
-          <img src="https://images.justwatch.com/poster/307617/s718/godzilla-x-kong-the-new-empire.jpg" alt="IMAX Banner" />
+        <div
+          class="banner-right"
+          @mouseenter="pauseBannerRotation"
+          @mouseleave="resumeBannerRotation"
+        >
+          <img :src="currentBanner" alt="Cinema banner" />
           <div class="banner-text">
-            <div class="imax-logo">IMAX</div>
-            <div class="banner-title">FILMS TO THE</div>
-            <div class="banner-subtitle">FULLEST</div>
+            <div class="imax-logo"></div>
           </div>
         </div>
       </div>
@@ -178,7 +180,7 @@
 </template>
 
 <script setup>
-import { ref, computed, inject } from 'vue'
+import { ref, computed, inject, onMounted, onBeforeUnmount } from 'vue'
 import PickTicketsModal from './PickTicketsModal.vue'
 
 const currentPage = inject('currentPage', { value: 'home' })
@@ -189,6 +191,40 @@ const selectedCinema = ref(null)
 const showFutureDates = ref(false)
 const selectedDateIndexByMovie = ref({})
 const pickTicketsModal = ref(null)
+const cinemaBanners = [
+  new URL('../assets/Banners/Cinema_Banners/banner_1.jpeg', import.meta.url).href,
+  new URL('../assets/Banners/Cinema_Banners/banner_2.jpg', import.meta.url).href,
+  new URL('../assets/Banners/Cinema_Banners/banner_3.jpg', import.meta.url).href,
+  new URL('../assets/Banners/Cinema_Banners/banner_4.jpeg', import.meta.url).href
+]
+const currentBannerIndex = ref(0)
+const currentBanner = computed(() => cinemaBanners[currentBannerIndex.value])
+let bannerInterval = null
+
+const rotateBanner = () => {
+  currentBannerIndex.value = (currentBannerIndex.value + 1) % cinemaBanners.length
+}
+
+const pauseBannerRotation = () => {
+  if (bannerInterval) {
+    clearInterval(bannerInterval)
+    bannerInterval = null
+  }
+}
+
+const resumeBannerRotation = () => {
+  if (!bannerInterval) {
+    bannerInterval = setInterval(rotateBanner, 5000)
+  }
+}
+
+onMounted(() => {
+  resumeBannerRotation()
+})
+
+onBeforeUnmount(() => {
+  pauseBannerRotation()
+})
 
 const navigateTo = (page) => {
   currentPage.value = page
@@ -213,10 +249,10 @@ const generateFutureDates = () => {
 const nowShowingMovies = [
   {
     id: 1,
-    title: 'Quezon',
-    rating: 'PG',
-    poster: 'https://images.justwatch.com/poster/307617/s718/godzilla-x-kong-the-new-empire.jpg',
-    showtimes: ['05:45 PM', '08:30 PM'],
+    title: 'Meet, Greet & Bye',
+    rating: 'G',
+    poster: new URL('../assets/Now_Showing/MeetGreet-AndBye.jpg', import.meta.url).href,
+    showtimes: ['03:30 PM', '06:00 PM', '08:30 PM'],
     futureShoTimes: [
       { date: 'Thu, Nov 15', showtimes: ['04:00 PM', '06:45 PM', '09:15 PM'] },
       { date: 'Fri, Nov 16', showtimes: ['05:00 PM', '07:45 PM', '10:00 PM'] },
@@ -225,26 +261,98 @@ const nowShowingMovies = [
   },
   {
     id: 2,
-    title: 'Meet, Greet & Bye',
-    rating: 'G',
-    poster: 'https://images.justwatch.com/poster/307617/s718/godzilla-x-kong-the-new-empire.jpg',
-    showtimes: ['04:15 PM', '06:45 PM', '09:00 PM'],
+    title: 'Wicked: For Good',
+    rating: 'PG-13',
+    poster: new URL('../assets/Now_Showing/The-Wicked.jpg', import.meta.url).href,
+    showtimes: ['01:45 PM', '04:30 PM', '07:15 PM'],
     futureShoTimes: [
-      { date: 'Thu, Nov 15', showtimes: ['02:30 PM', '05:00 PM', '07:30 PM'] },
-      { date: 'Fri, Nov 16', showtimes: ['03:00 PM', '05:30 PM', '08:00 PM'] },
-      { date: 'Sat, Nov 17', showtimes: ['11:00 AM', '01:30 PM', '04:00 PM', '06:30 PM'] }
+      { date: 'Thu, Nov 15', showtimes: ['02:30 PM', '05:00 PM', '08:00 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['03:15 PM', '06:00 PM', '09:00 PM'] },
+      { date: 'Sat, Nov 17', showtimes: ['12:30 PM', '03:15 PM', '06:00 PM', '08:45 PM'] }
     ]
   },
   {
     id: 3,
-    title: 'The Running Man',
-    rating: 'M',
-    poster: 'https://images.justwatch.com/poster/307617/s718/godzilla-x-kong-the-new-empire.jpg',
-    showtimes: ['05:00 PM', '07:30 PM', '10:00 PM'],
+    title: 'Now You See Me: Now You Don\'t',
+    rating: 'PG-13',
+    poster: new URL('../assets/Now_Showing/NowYouSeeMe-NowYouDont.jpg', import.meta.url).href,
+    showtimes: ['02:00 PM', '05:00 PM', '07:45 PM'],
     futureShoTimes: [
-      { date: 'Thu, Nov 15', showtimes: ['06:00 PM', '08:30 PM', '11:00 PM'] },
-      { date: 'Fri, Nov 16', showtimes: ['05:30 PM', '08:00 PM', '10:30 PM'] },
-      { date: 'Sat, Nov 17', showtimes: ['03:00 PM', '05:30 PM', '08:00 PM', '10:30 PM'] }
+      { date: 'Thu, Nov 15', showtimes: ['03:00 PM', '06:00 PM', '09:00 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['03:30 PM', '07:00 PM', '10:15 PM'] },
+      { date: 'Sat, Nov 17', showtimes: ['01:30 PM', '04:30 PM', '07:15 PM', '09:45 PM'] }
+    ]
+  },
+  {
+    id: 4,
+    title: 'Zootopia 2',
+    rating: 'G',
+    poster: new URL('../assets/Now_Showing/Zootopia-2.jpg', import.meta.url).href,
+    showtimes: ['10:30 AM', '12:45 PM', '03:15 PM'],
+    futureShoTimes: [
+      { date: 'Thu, Nov 15', showtimes: ['11:00 AM', '01:30 PM', '04:00 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['11:45 AM', '02:15 PM', '04:45 PM'] },
+      { date: 'Sat, Nov 17', showtimes: ['09:30 AM', '12:00 PM', '02:30 PM', '05:00 PM'] }
+    ]
+  },
+  {
+    id: 5,
+    title: 'Tha Rae: The Exorcist',
+    rating: 'M',
+    poster: new URL('../assets/Now_Showing/TheRae-TheExorcist.jpg', import.meta.url).href,
+    showtimes: ['06:00 PM', '08:45 PM', '11:30 PM'],
+    futureShoTimes: [
+      { date: 'Thu, Nov 15', showtimes: ['06:30 PM', '09:15 PM', '11:45 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['07:00 PM', '09:30 PM', '12:00 AM'] },
+      { date: 'Sat, Nov 17', showtimes: ['05:45 PM', '08:30 PM', '11:15 PM'] }
+    ]
+  },
+  {
+    id: 6,
+    title: 'Salvageland',
+    rating: 'PG-13',
+    poster: new URL('../assets/Now_Showing/Salvage-Land.jpg', import.meta.url).href,
+    showtimes: ['02:30 PM', '05:30 PM', '08:30 PM'],
+    futureShoTimes: [
+      { date: 'Thu, Nov 15', showtimes: ['03:15 PM', '06:15 PM', '09:15 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['03:45 PM', '07:30 PM', '10:30 PM'] },
+      { date: 'Sat, Nov 17', showtimes: ['02:00 PM', '05:00 PM', '08:00 PM'] }
+    ]
+  },
+  {
+    id: 7,
+    title: 'SEVENTEEN WORLD TOUR [NEW_] IN JAPAN: LIVE VIEWING',
+    rating: 'G',
+    poster: new URL('../assets/Now_Showing/SEVENTEEN_WORLD_TOUR_NEW_IN_JAPAN_LIVE_VIEWING.jpg', import.meta.url).href,
+    showtimes: ['07:00 PM'],
+    futureShoTimes: [
+      { date: 'Thu, Nov 15', showtimes: ['07:00 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['07:00 PM'] },
+      { date: 'Sat, Nov 17', showtimes: ['07:00 PM'] }
+    ]
+  },
+  {
+    id: 8,
+    title: "KMJS' Gabi Ng Lagim: The Movie",
+    rating: 'PG-13',
+    poster: new URL("../assets/Now_Showing/KMJS'GabiNgLagim-TheMovie.jpg", import.meta.url).href,
+    showtimes: ['04:00 PM', '07:00 PM'],
+    futureShoTimes: [
+      { date: 'Thu, Nov 15', showtimes: ['04:45 PM', '07:30 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['05:30 PM', '08:15 PM'] },
+      { date: 'Sat, Nov 17', showtimes: ['03:00 PM', '06:00 PM'] }
+    ]
+  },
+  {
+    id: 9,
+    title: 'Keeper',
+    rating: 'PG-13',
+    poster: new URL('../assets/Now_Showing/Keeper.jpg', import.meta.url).href,
+    showtimes: ['01:00 PM', '03:30 PM', '06:00 PM'],
+    futureShoTimes: [
+      { date: 'Thu, Nov 15', showtimes: ['01:30 PM', '04:00 PM', '06:30 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['02:00 PM', '05:00 PM', '07:30 PM'] },
+      { date: 'Sat, Nov 17', showtimes: ['12:30 PM', '03:00 PM', '05:30 PM'] }
     ]
   }
 ]
@@ -987,46 +1095,33 @@ const filteredCinemas = computed(() => {
   gap: 1rem;
 }
 
-.banner-btn {
-  padding: 1rem;
-  background-color: transparent;
-  color: white;
-  border: 2px solid white;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  line-height: 1.4;
-}
-
-.banner-btn:hover {
-  background-color: white;
-  color: rgb(249, 44, 29);
-}
-
 .banner-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 1rem;
-  border-radius: 4px;
   position: relative;
   overflow: hidden;
+  flex: 1;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .banner-right img {
-  width: 100%;
+  width: 120%;
   height: auto;
-  border-radius: 4px;
+  object-fit: cover;
+  display: block;
 }
 
 .banner-text {
+  position: absolute;
+  inset: 0;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.75));
   z-index: 1;
+  color: white;
 }
 
 .imax-logo {
@@ -1514,7 +1609,7 @@ const filteredCinemas = computed(() => {
   }
 
   .banner-right {
-    height: 150px;
+    min-height: 220px;
     width: 100%;
   }
 

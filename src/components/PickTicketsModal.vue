@@ -323,14 +323,14 @@ const pickStep = ref(1) // 1: Movie, 2: Cinema, 3: Show Type, 4: Date, 5: Time
 const nowShowingMovies = [
   {
     id: 1,
-    title: 'Quezon',
-    rating: 'PG',
-    poster: 'https://images.justwatch.com/poster/307617/s718/godzilla-x-kong-the-new-empire.jpg',
-    trailer: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    showtimes: ['05:45 PM', '08:30 PM'],
+    title: 'Meet, Greet & Bye',
+    rating: 'G',
+    poster: new URL('../assets/Now_Showing/MeetGreet-AndBye.jpg', import.meta.url).href,
+    trailer: 'https://www.youtube.com/watch?v=7U9KZness2w',
+    showtimes: ['03:30 PM', '06:00 PM', '08:30 PM'],
     dates: ['Today', 'Thu, Nov 15', 'Fri, Nov 16', 'Sat, Nov 17'],
     futureShoTimes: [
-      { date: 'Today', showtimes: ['05:45 PM', '08:30 PM'] },
+      { date: 'Today', showtimes: ['03:30 PM', '06:00 PM', '08:30 PM'] },
       { date: 'Thu, Nov 15', showtimes: ['04:00 PM', '06:45 PM', '09:15 PM'] },
       { date: 'Fri, Nov 16', showtimes: ['05:00 PM', '07:45 PM', '10:00 PM'] },
       { date: 'Sat, Nov 17', showtimes: ['01:00 PM', '03:45 PM', '06:15 PM', '08:45 PM'] }
@@ -338,32 +338,122 @@ const nowShowingMovies = [
   },
   {
     id: 2,
-    title: 'Meet, Greet & Bye',
-    rating: 'G',
-    poster: 'https://images.justwatch.com/poster/307617/s718/godzilla-x-kong-the-new-empire.jpg',
-    trailer: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    showtimes: ['04:15 PM', '06:45 PM', '09:00 PM'],
+    title: 'Wicked: For Good',
+    rating: 'PG-13',
+    poster: new URL('../assets/Now_Showing/The-Wicked.jpg', import.meta.url).href,
+    trailer: 'https://www.youtube.com/watch?v=71IG6R6VESA',
+    showtimes: ['01:45 PM', '04:30 PM', '07:15 PM'],
     dates: ['Today', 'Thu, Nov 15', 'Fri, Nov 16', 'Sat, Nov 17'],
     futureShoTimes: [
-      { date: 'Today', showtimes: ['04:15 PM', '06:45 PM', '09:00 PM'] },
-      { date: 'Thu, Nov 15', showtimes: ['02:30 PM', '05:00 PM', '07:30 PM'] },
-      { date: 'Fri, Nov 16', showtimes: ['03:00 PM', '05:30 PM', '08:00 PM'] },
-      { date: 'Sat, Nov 17', showtimes: ['11:00 AM', '01:30 PM', '04:00 PM', '06:30 PM'] }
+      { date: 'Today', showtimes: ['01:45 PM', '04:30 PM', '07:15 PM'] },
+      { date: 'Thu, Nov 15', showtimes: ['02:30 PM', '05:00 PM', '08:00 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['03:15 PM', '06:00 PM', '09:00 PM'] },
+      { date: 'Sat, Nov 17', showtimes: ['12:30 PM', '03:15 PM', '06:00 PM', '08:45 PM'] }
     ]
   },
   {
     id: 3,
-    title: 'The Running Man',
-    rating: 'M',
-    poster: 'https://images.justwatch.com/poster/307617/s718/godzilla-x-kong-the-new-empire.jpg',
-    trailer: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    showtimes: ['05:00 PM', '07:30 PM', '10:00 PM'],
+    title: 'Now You See Me: Now You Don\'t',
+    rating: 'PG-13',
+    poster: new URL('../assets/Now_Showing/NowYouSeeMe-NowYouDont.jpg', import.meta.url).href,
+    trailer: 'https://www.youtube.com/watch?v=Kna8sZ1pp4g',
+    showtimes: ['02:00 PM', '05:00 PM', '07:45 PM'],
     dates: ['Today', 'Thu, Nov 15', 'Fri, Nov 16', 'Sat, Nov 17'],
     futureShoTimes: [
-      { date: 'Today', showtimes: ['05:00 PM', '07:30 PM', '10:00 PM'] },
-      { date: 'Thu, Nov 15', showtimes: ['06:00 PM', '08:30 PM', '11:00 PM'] },
-      { date: 'Fri, Nov 16', showtimes: ['05:30 PM', '08:00 PM', '10:30 PM'] },
-      { date: 'Sat, Nov 17', showtimes: ['03:00 PM', '05:30 PM', '08:00 PM', '10:30 PM'] }
+      { date: 'Today', showtimes: ['02:00 PM', '05:00 PM', '07:45 PM'] },
+      { date: 'Thu, Nov 15', showtimes: ['03:00 PM', '06:00 PM', '09:00 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['03:30 PM', '07:00 PM', '10:15 PM'] },
+      { date: 'Sat, Nov 17', showtimes: ['01:30 PM', '04:30 PM', '07:15 PM', '09:45 PM'] }
+    ]
+  },
+  {
+    id: 4,
+    title: 'Zootopia 2',
+    rating: 'G',
+    poster: new URL('../assets/Now_Showing/Zootopia-2.jpg', import.meta.url).href,
+    trailer: 'https://www.youtube.com/watch?v=2mWjBcA7zEY',
+    showtimes: ['10:30 AM', '12:45 PM', '03:15 PM'],
+    dates: ['Today', 'Thu, Nov 15', 'Fri, Nov 16', 'Sat, Nov 17'],
+    futureShoTimes: [
+      { date: 'Today', showtimes: ['10:30 AM', '12:45 PM', '03:15 PM'] },
+      { date: 'Thu, Nov 15', showtimes: ['11:00 AM', '01:30 PM', '04:00 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['11:45 AM', '02:15 PM', '04:45 PM'] },
+      { date: 'Sat, Nov 17', showtimes: ['09:30 AM', '12:00 PM', '02:30 PM', '05:00 PM'] }
+    ]
+  },
+  {
+    id: 5,
+    title: 'Tha Rae: The Exorcist',
+    rating: 'M',
+    poster: new URL('../assets/Now_Showing/TheRae-TheExorcist.jpg', import.meta.url).href,
+    trailer: 'https://www.youtube.com/watch?v=YxuY3hOs7QA',
+    showtimes: ['06:00 PM', '08:45 PM', '11:30 PM'],
+    dates: ['Today', 'Thu, Nov 15', 'Fri, Nov 16', 'Sat, Nov 17'],
+    futureShoTimes: [
+      { date: 'Today', showtimes: ['06:00 PM', '08:45 PM', '11:30 PM'] },
+      { date: 'Thu, Nov 15', showtimes: ['06:30 PM', '09:15 PM', '11:45 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['07:00 PM', '09:30 PM', '12:00 AM'] },
+      { date: 'Sat, Nov 17', showtimes: ['05:45 PM', '08:30 PM', '11:15 PM'] }
+    ]
+  },
+  {
+    id: 6,
+    title: 'Salvageland',
+    rating: 'PG-13',
+    poster: new URL('../assets/Now_Showing/Salvage-Land.jpg', import.meta.url).href,
+    trailer: 'https://www.youtube.com/watch?v=aHrZseSM1n0',
+    showtimes: ['02:30 PM', '05:30 PM', '08:30 PM'],
+    dates: ['Today', 'Thu, Nov 15', 'Fri, Nov 16', 'Sat, Nov 17'],
+    futureShoTimes: [
+      { date: 'Today', showtimes: ['02:30 PM', '05:30 PM', '08:30 PM'] },
+      { date: 'Thu, Nov 15', showtimes: ['03:15 PM', '06:15 PM', '09:15 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['03:45 PM', '07:30 PM', '10:30 PM'] },
+      { date: 'Sat, Nov 17', showtimes: ['02:00 PM', '05:00 PM', '08:00 PM'] }
+    ]
+  },
+  {
+    id: 7,
+    title: 'SEVENTEEN WORLD TOUR [NEW_] IN JAPAN: LIVE VIEWING',
+    rating: 'G',
+    poster: new URL('../assets/Now_Showing/SEVENTEEN_WORLD_TOUR_NEW_IN_JAPAN_LIVE_VIEWING.jpg', import.meta.url).href,
+    trailer: 'https://www.youtube.com/watch?v=lX6Qo0vZ9aw',
+    showtimes: ['07:00 PM'],
+    dates: ['Today', 'Thu, Nov 15', 'Fri, Nov 16', 'Sat, Nov 17'],
+    futureShoTimes: [
+      { date: 'Today', showtimes: ['07:00 PM'] },
+      { date: 'Thu, Nov 15', showtimes: ['07:00 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['07:00 PM'] },
+      { date: 'Sat, Nov 17', showtimes: ['07:00 PM'] }
+    ]
+  },
+  {
+    id: 8,
+    title: "KMJS' Gabi Ng Lagim: The Movie",
+    rating: 'PG-13',
+    poster: new URL("../assets/Now_Showing/KMJS'GabiNgLagim-TheMovie.jpg", import.meta.url).href,
+    trailer: 'https://www.youtube.com/watch?v=5D1v3xv_WoI',
+    showtimes: ['04:00 PM', '07:00 PM'],
+    dates: ['Today', 'Thu, Nov 15', 'Fri, Nov 16', 'Sat, Nov 17'],
+    futureShoTimes: [
+      { date: 'Today', showtimes: ['04:00 PM', '07:00 PM'] },
+      { date: 'Thu, Nov 15', showtimes: ['04:45 PM', '07:30 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['05:30 PM', '08:15 PM'] },
+      { date: 'Sat, Nov 17', showtimes: ['03:00 PM', '06:00 PM'] }
+    ]
+  },
+  {
+    id: 9,
+    title: 'Keeper',
+    rating: 'PG-13',
+    poster: new URL('../assets/Now_Showing/Keeper.jpg', import.meta.url).href,
+    trailer: 'https://www.youtube.com/watch?v=9h8BSv4ICsA',
+    showtimes: ['01:00 PM', '03:30 PM', '06:00 PM'],
+    dates: ['Today', 'Thu, Nov 15', 'Fri, Nov 16', 'Sat, Nov 17'],
+    futureShoTimes: [
+      { date: 'Today', showtimes: ['01:00 PM', '03:30 PM', '06:00 PM'] },
+      { date: 'Thu, Nov 15', showtimes: ['01:30 PM', '04:00 PM', '06:30 PM'] },
+      { date: 'Fri, Nov 16', showtimes: ['02:00 PM', '05:00 PM', '07:30 PM'] },
+      { date: 'Sat, Nov 17', showtimes: ['12:30 PM', '03:00 PM', '05:30 PM'] }
     ]
   }
 ]

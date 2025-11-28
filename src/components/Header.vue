@@ -3,8 +3,11 @@
     <div class="container">
       <div class="header-content">
         <div class="logo">
-          <div class="logo-circle">SM</div>
-          <span class="logo-text">SMCINEMA</span>
+          <div class="logo-texts">
+            <span class="logo-sm">SM</span>
+            <span class="logo-cinema">CINEMA</span>
+          </div>
+          <img :src="logoImage" alt="SM Cinema logo" class="logo-image" />
         </div>
         <nav class="nav">
           <button @click="$emit('navigate', 'home')" :class="{ active: currentPage === 'home' }" class="nav-link">Home</button>
@@ -23,6 +26,7 @@ import { inject } from 'vue'
 
 defineEmits(['navigate'])
 const currentPage = inject('currentPage', { value: 'home' })
+const logoImage = new URL('../assets/SM_Logo/Logo.jpg', import.meta.url).href
 </script>
 
 <style scoped>
@@ -49,30 +53,34 @@ const currentPage = inject('currentPage', { value: 'home' })
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-weight: 600;
-  color: white;
-  text-decoration: none;
   flex-shrink: 0;
 }
 
-.logo-circle {
-  width: 40px;
-  height: 40px;
-  background-color: white;
-  border-radius: 50%;
+.logo-texts {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: red;
-  font-size: 0.9rem;
+  gap: 0.35rem;
+  line-height: 1;
 }
 
-.logo-text {
-  color: white;
-  font-size: 1.1rem;
+.logo-sm {
+  font-size: 1.2rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  color: white;
+}
+
+.logo-cinema {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 1px;
+}
+
+.logo-image {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 50%;
 }
 
 .nav {
