@@ -123,7 +123,8 @@ const nowShowingMovies = [
     rating: 'G',
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/MeetGreet-AndBye.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/Mtou4LuxFrg?si=8-vsDNPXYbHdaUHQ'
+    trailer: 'https://youtu.be/Mtou4LuxFrg?si=8-vsDNPXYbHdaUHQ',
+    synopsis: 'The Facundo family\'s lives are upended when they discover their mother\'s cancer has returned.'
   },
   {
     id: 2,
@@ -131,7 +132,8 @@ const nowShowingMovies = [
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/The-Wicked.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/R2Xubj7lazE?si=7DfsSII3eHKA5cSf'
+    trailer: 'https://youtu.be/R2Xubj7lazE?si=7DfsSII3eHKA5cSf',
+    synopsis: 'The untold backstory of Elphaba and Glinda as the conflict between magic and politics reshapes the Emerald City in this lavish musical feature.'
   },
   {
     id: 3,
@@ -139,7 +141,8 @@ const nowShowingMovies = [
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/NowYouSeeMe-NowYouDont.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/-E3lMRx7HRQ?si=syCXRQHpMtLEi63W'
+    trailer: 'https://youtu.be/-E3lMRx7HRQ?si=syCXRQHpMtLEi63W',
+    synopsis: 'The Horsemen return to pull off a daring global illusion that will expose a shadowy villain and keep audiences guessing who the real magicians are.'
   },
   {
     id: 4,
@@ -147,7 +150,8 @@ const nowShowingMovies = [
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/Zootopia-2.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/BjkIOU5PhyQ?si=gwTO3__5o-OQExgA'
+    trailer: 'https://youtu.be/BjkIOU5PhyQ?si=gwTO3__5o-OQExgA',
+    synopsis: 'Judy Hopps and Nick Wilde tackle a high-stakes mystery involving a new wave of conflict between prey and predator communities in Zootopia.'
   },
   {
     id: 5,
@@ -155,7 +159,8 @@ const nowShowingMovies = [
     rating: 'M',
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/TheRae-TheExorcist.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/TshZVPCrtF0?si=TYIbw9AX8PcRGc1L'
+    trailer: 'https://youtu.be/TshZVPCrtF0?si=TYIbw9AX8PcRGc1L',
+    synopsis: 'A priest and a community must confront an ancient evil believed to be haunting the rural town of Tha Rae, blurring folklore and faith.'
   },
   {
     id: 6,
@@ -163,7 +168,8 @@ const nowShowingMovies = [
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/Salvage-Land.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/Y1ClNzed-g4?si=AKL8BHQ3o_SJbuB5'
+    trailer: 'https://youtu.be/Y1ClNzed-g4?si=AKL8BHQ3o_SJbuB5',
+    synopsis: "Two siblings fight to keep their family's salvage yard afloat while rediscovering the meaning of home, heritage, and second chances."
   },
   {
     id: 7,
@@ -171,7 +177,8 @@ const nowShowingMovies = [
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/SEVENTEEN_WORLD_TOUR_NEW_IN_JAPAN_LIVE_VIEWING.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/EoGFOvMTBhM?si=k5LS-DyRLrwxilWj'
+    trailer: 'https://youtu.be/EoGFOvMTBhM?si=k5LS-DyRLrwxilWj',
+    synopsis: "A concert film capturing SEVENTEEN's electrifying Japan tour with backstage moments, fan stories, and the choreography the group is known for."
   },
   {
     id: 8,
@@ -179,7 +186,8 @@ const nowShowingMovies = [
     rating: 'PG',
     price: standardPrice,
     poster: new URL("../assets/Now_Showing/KMJS'GabiNgLagim-TheMovie.jpg", import.meta.url).href,
-    trailer: 'https://youtu.be/IeW72gqVPhE?si=NE8VXDjfabfFjZjh'
+    trailer: 'https://youtu.be/IeW72gqVPhE?si=NE8VXDjfabfFjZjh',
+    synopsis: 'Based on the long-running KMJS segment, investigators revisit chilling Filipino folklore tied to unexplained disappearances in Laguna.'
   },
   {
     id: 9,
@@ -187,7 +195,8 @@ const nowShowingMovies = [
     rating: 'M',
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/Keeper.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/cwpusY785l4?si=QMgqIFKhL_Q7JQE4'
+    trailer: 'https://youtu.be/cwpusY785l4?si=QMgqIFKhL_Q7JQE4',
+    synopsis: 'An emotionally charged romance about a gifted teen footballer who must balance his dreams with the fragile relationships he keeps off the pitch.'
   }
 ]
 
@@ -198,7 +207,8 @@ const comingSoonMovies = [
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/FFF2025-13Days13Nights.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/K-8nIAQit3o?si=0dkcp7ow5OPFKvL5'
+    trailer: 'https://youtu.be/K-8nIAQit3o?si=0dkcp7ow5OPFKvL5',
+    synopsis: 'As American troops prepare to leave the country, the Taliban storm the capital and seize power. In the midst of the chaos, Major Mohamed Bida and his men provide security for the French embassy, which is still open. Trapped, Major Bida decides to negotiate with the Taliban to organize a last-chance convoy, with the help of Eva, a young Franco-Afghan translator. A race against time begins to get the evacuees to the airport and escape the hell of Kabul before it\'s too late.'
   },
   {
     id: 2,
@@ -206,7 +216,8 @@ const comingSoonMovies = [
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/FFF2025-DiaryOfAFleetingAffair.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/K4Q95OIa-Pc?si=Ke6bOt4XlODHrgHE'
+    trailer: 'https://youtu.be/K4Q95OIa-Pc?si=Ke6bOt4XlODHrgHE',
+    synopsis: ''
   },
   {
     id: 3,
@@ -506,12 +517,6 @@ const displayedMovies = computed(() => {
   .banner-slide img {
     height: 100%;
   }
-
-  .banner-control {
-    width: 35px;
-    height: 35px;
-    font-size: 2rem;
-  }
 }
 
 .banner-slide {
@@ -529,13 +534,13 @@ const displayedMovies = computed(() => {
 }
 
 .banner-control {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   border: none;
   background-color: rgba(255, 255, 255, 0.9);
   color: #333;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -548,9 +553,13 @@ const displayedMovies = computed(() => {
 }
 
 
+.section-header {
+  margin-bottom: 1.25rem;
+}
+
 .tabs {
   display: flex;
-  gap: 0;
+  gap: 0.75rem;
   border-bottom: 2px solid #ddd;
 }
 
@@ -580,6 +589,7 @@ const displayedMovies = computed(() => {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 1.5rem;
+  margin-top: 1.25rem;
   margin-bottom: 2rem;
 }
 

@@ -37,6 +37,9 @@ defineEmits(['buy-tickets', 'watch-trailer'])
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 380px;
 }
 
 .movie-card:hover {
@@ -47,10 +50,10 @@ defineEmits(['buy-tickets', 'watch-trailer'])
 .movie-poster {
   position: relative;
   width: 100%;
-  padding-bottom: 150%;
   overflow: hidden;
   background: #f0f0f0;
   cursor: pointer;
+  height: 230px;
 }
 
 .movie-poster img {
@@ -96,6 +99,10 @@ defineEmits(['buy-tickets', 'watch-trailer'])
 
 .movie-info {
   padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .movie-title {

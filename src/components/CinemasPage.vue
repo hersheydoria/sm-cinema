@@ -1095,6 +1095,24 @@ const filteredCinemas = computed(() => {
   gap: 1rem;
 }
 
+.banner-btn {
+    padding: 1rem;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 1.4;
+  }
+
+  .banner-btn:hover {
+  background-color: white;
+  color: rgb(249, 44, 29);
+}
+
 .banner-right {
   position: relative;
   overflow: hidden;
@@ -1606,6 +1624,7 @@ const filteredCinemas = computed(() => {
   .banner-btn {
     padding: 0.75rem 1rem;
     font-size: 0.8rem;
+    background-color: white;
   }
 
   .banner-right {
