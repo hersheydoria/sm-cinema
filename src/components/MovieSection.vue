@@ -55,11 +55,12 @@ import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import MovieCard from './MovieCard.vue'
 import PickTicketsModal from './PickTicketsModal.vue'
 import TrailerModal from './TrailerModal.vue'
+
 const pickTicketsModal = ref(null)
 const trailerModal = ref(null)
 const activeTab = ref('NOW SHOWING')
 const tabs = ['NOW SHOWING', 'COMING SOON']
-const standardPrice = '₱350'
+const standardPrice = 'Starting ₱330'
 const cinemaBanners = [
   new URL('../assets/Banners/Cinema_Banners/banner_1.jpeg', import.meta.url).href,
   new URL('../assets/Banners/Cinema_Banners/banner_2.jpg', import.meta.url).href,
@@ -124,7 +125,8 @@ const nowShowingMovies = [
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/MeetGreet-AndBye.jpg', import.meta.url).href,
     trailer: 'https://youtu.be/Mtou4LuxFrg?si=8-vsDNPXYbHdaUHQ',
-    synopsis: 'The Facundo family\'s lives are upended when they discover their mother\'s cancer has returned.'
+    synopsis:
+      'A mother, who loves watching KDramas, decides to stop her chemo treatment after losing hope of getting better. Her only dream before dying is to meet her ultimate KDrama idol, who is visiting Manila for a series of events. Her four children agree to work together with the condition that once their mother meets their idol, she will undergo therapy before her time runs out. Run Time: 1 hours 47 minutes.'
   },
   {
     id: 2,
@@ -133,7 +135,8 @@ const nowShowingMovies = [
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/The-Wicked.jpg', import.meta.url).href,
     trailer: 'https://youtu.be/R2Xubj7lazE?si=7DfsSII3eHKA5cSf',
-    synopsis: 'The untold backstory of Elphaba and Glinda as the conflict between magic and politics reshapes the Emerald City in this lavish musical feature.'
+    synopsis:
+      'Elphaba, the future Wicked Witch of the West and her relationship with Glinda, the Good Witch of the North. The second of a two-part feature film adaptation of the Broadway musical. Run Time: 2 hours 18 minutes.'
   },
   {
     id: 3,
@@ -142,7 +145,8 @@ const nowShowingMovies = [
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/NowYouSeeMe-NowYouDont.jpg', import.meta.url).href,
     trailer: 'https://youtu.be/-E3lMRx7HRQ?si=syCXRQHpMtLEi63W',
-    synopsis: 'The Horsemen return to pull off a daring global illusion that will expose a shadowy villain and keep audiences guessing who the real magicians are.'
+    synopsis:
+      'A diamond heist reunites retired Horsemen illusionists with new performers Greenblatt, Smith and Sessa as they target dangerous criminals. Run Time: 1 hours 52 minutes.'
   },
   {
     id: 4,
@@ -151,7 +155,8 @@ const nowShowingMovies = [
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/Zootopia-2.jpg', import.meta.url).href,
     trailer: 'https://youtu.be/BjkIOU5PhyQ?si=gwTO3__5o-OQExgA',
-    synopsis: 'Judy Hopps and Nick Wilde tackle a high-stakes mystery involving a new wave of conflict between prey and predator communities in Zootopia.'
+    synopsis:
+      'In Walt Disney Animation Studios’ “Zootopia 2,” detectives Judy Hopps and Nick Wilde find themselves on the twisting trail of a mysterious reptile who arrives in Zootopia and turns the animal metropolis upside down. To crack the case, Judy and Nick must go undercover to unexpected new parts of town, where their growing partnership is tested like never before. Run Time: 1 hours 47 minutes.'
   },
   {
     id: 5,
@@ -160,7 +165,8 @@ const nowShowingMovies = [
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/TheRae-TheExorcist.jpg', import.meta.url).href,
     trailer: 'https://youtu.be/TshZVPCrtF0?si=TYIbw9AX8PcRGc1L',
-    synopsis: 'A priest and a community must confront an ancient evil believed to be haunting the rural town of Tha Rae, blurring folklore and faith.'
+    synopsis:
+      "In Thailand's largest Catholic village, Tha Rae, a demon returns after forty years, possessing a former priest and spreading terror. Traditional exorcism fails, forcing a by-the-book priest and a rogue shaman to join forces. Run Time: 1 hours 58 minutes."
   },
   {
     id: 6,
@@ -169,7 +175,8 @@ const nowShowingMovies = [
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/Salvage-Land.jpg', import.meta.url).href,
     trailer: 'https://youtu.be/Y1ClNzed-g4?si=AKL8BHQ3o_SJbuB5',
-    synopsis: "Two siblings fight to keep their family's salvage yard afloat while rediscovering the meaning of home, heritage, and second chances."
+    synopsis:
+      '"Salvageland” is a gritty neo-Western thriller about moral reckoning and the price of justice in a land scorched by violence and neglect—where men are shaped by silence, fear, and the unforgiving environment they’ve learned to survive. Run Time: 1 hours 30 minutes.'
   },
   {
     id: 7,
@@ -178,7 +185,8 @@ const nowShowingMovies = [
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/SEVENTEEN_WORLD_TOUR_NEW_IN_JAPAN_LIVE_VIEWING.jpg', import.meta.url).href,
     trailer: 'https://youtu.be/EoGFOvMTBhM?si=k5LS-DyRLrwxilWj',
-    synopsis: "A concert film capturing SEVENTEEN's electrifying Japan tour with backstage moments, fan stories, and the choreography the group is known for."
+    synopsis:
+      'Celebrating their 10th anniversary, SEVENTEEN embarks on a monumental new journey with their world tour [NEW_], symbolizing a fresh start and endless possibilities ahead. Known as a performance powerhouse, SEVENTEEN delivers dynamic stages, reimagined choreography, and solo performances that spotlight each member’s growth and artistry. From Incheon to North America and across Asia, the journey culminates in the Nagoya concert, broadcast live to cinemas worldwide on November 29. Experience SEVENTEEN’s passion, unity, and energy; on the big screen, together with fans around the world. Run Time: 3 hours 30 minutes.'
   },
   {
     id: 8,
@@ -187,7 +195,8 @@ const nowShowingMovies = [
     price: standardPrice,
     poster: new URL("../assets/Now_Showing/KMJS'GabiNgLagim-TheMovie.jpg", import.meta.url).href,
     trailer: 'https://youtu.be/IeW72gqVPhE?si=NE8VXDjfabfFjZjh',
-    synopsis: 'Based on the long-running KMJS segment, investigators revisit chilling Filipino folklore tied to unexplained disappearances in Laguna.'
+    synopsis:
+      'Three chilling tales based on real stories expose the haunting depths of faith, fear, and the unknown — from a seafarer trapped on a cursed voyage, to an island plagued by a flesh-eating legend, and a young woman’s battle against a legion of demons that pushes the limits of faith and sanity. Run Time: 1 hours 57 minutes.'
   },
   {
     id: 9,
@@ -196,292 +205,258 @@ const nowShowingMovies = [
     price: standardPrice,
     poster: new URL('../assets/Now_Showing/Keeper.jpg', import.meta.url).href,
     trailer: 'https://youtu.be/cwpusY785l4?si=QMgqIFKhL_Q7JQE4',
-    synopsis: 'An emotionally charged romance about a gifted teen footballer who must balance his dreams with the fragile relationships he keeps off the pitch.'
+    synopsis:
+      'A romantic anniversary trip to a secluded cabin turns sinister when a dark presence reveals itself, forcing a couple to confront the property\'s haunting past. Run Time: 1 hours 41 minutes.'
   }
 ]
 
 const comingSoonMovies = [
   {
     id: 1,
-    title: 'FFF2025 - 13 Days, 13 Nights',
-    rating: 'PG',
-    price: standardPrice,
-    poster: new URL('../assets/Coming_Soon/FFF2025-13Days13Nights.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/K-8nIAQit3o?si=0dkcp7ow5OPFKvL5',
-    synopsis: 'As American troops prepare to leave the country, the Taliban storm the capital and seize power. In the midst of the chaos, Major Mohamed Bida and his men provide security for the French embassy, which is still open. Trapped, Major Bida decides to negotiate with the Taliban to organize a last-chance convoy, with the help of Eva, a young Franco-Afghan translator. A race against time begins to get the evacuees to the airport and escape the hell of Kabul before it\'s too late.'
-  },
-  {
-    id: 2,
-    title: 'FFF2025 - Diary of a Fleeting Affair',
-    rating: 'PG',
-    price: standardPrice,
-    poster: new URL('../assets/Coming_Soon/FFF2025-DiaryOfAFleetingAffair.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/K4Q95OIa-Pc?si=Ke6bOt4XlODHrgHE',
-    synopsis: ''
-  },
-  {
-    id: 3,
-    title: 'FFF2025 - Leave One Day',
-    rating: 'PG',
-    price: standardPrice,
-    poster: new URL('../assets/Coming_Soon/FFF2025-LeaveOneDay.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/qcyZMsj0TDA?si=VzCvAOBQbHAGtyZf'
-  },
-  {
-    id: 4,
-    title: 'FFF2025 - Maya, Give Me A Title',
-    rating: 'PG',
-    price: standardPrice,
-    poster: new URL('../assets/Coming_Soon/FFF2025-MayaGiveMeATitle.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/xI7XXNBilMM?si=aQko5gB2gLFB5b0H'
-  },
-  {
-    id: 5,
-    title: 'FFF2025 - On the Wandering Path',
-    rating: 'PG',
-    price: standardPrice,
-    poster: new URL('../assets/Coming_Soon/FFF2025-OnTheWanderingPath.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/nPLOSNIKEc0?si=lS9hGiihnOr76iqL'
-  },
-  {
-    id: 6,
-    title: 'FFF2025 - The King and The Mockingbird',
-    rating: 'PG',
-    price: standardPrice,
-    poster: new URL('../assets/Coming_Soon/FFF2025-TheKingAndTheMockingbird.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/4tE5902k3nE?si=Z5fx_C0L2d9SFKWQ'
-  },
-  {
-    id: 7,
-    title: 'FFF2025 - The Little Sister',
-    rating: 'PG',
-    price: standardPrice,
-    poster: new URL('../assets/Coming_Soon/FFF2025-TheLittleSister.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/aHntkAmfiNs?si=bEyh7uCmBFLrbo6C'
-  },
-  {
-    id: 8,
-    title: 'FFF2025 - The Richest Woman in the World',
-    rating: 'PG',
-    price: standardPrice,
-    poster: new URL('../assets/Coming_Soon/FFF2025-TheRichestWomanInTheWorld.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/UrqG3doFXUY?si=U7GeFKYlHR9wDwDn'
-  },
-  {
-    id: 9,
-    title: 'FFF2025 - The Shrinking Man',
-    rating: 'PG',
-    price: standardPrice,
-    poster: new URL('../assets/Coming_Soon/FFF2025-TheShrinkingMan.jpg', import.meta.url).href,
-    trailer: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-  },
-  {
-    id: 10,
     title: 'Ang Happy Homes Ni Diane Hilario',
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/AngHappyHomes-NiDianeHilario.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/QMUkKo16T7I?si=DAHM5wZeNGmdLcxt'
+    trailer: 'https://youtu.be/QMUkKo16T7I?si=DAHM5wZeNGmdLcxt',
+    synopsis:
+      'A story of ordinary, happy people living in a tenement is suddenly shaken by a string of conspicuous deaths. Unfortunate and unrelated deaths continue, and they think a killer is living among them. Run Time: 1 hours 40 minutes.'
   },
   {
-    id: 11,
+    id: 2,
     title: 'Eternity',
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/Eternity.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/irXTps1REHU?si=C7YjzimOIUXaqWpM'
+    trailer: 'https://youtu.be/irXTps1REHU?si=C7YjzimOIUXaqWpM',
+    synopsis:
+      'In an afterlife where souls have one week to decide where to spend eternity, Joan is faced with the impossible choice between the man she spent her life with and her first love, who died young and has waited decades for her to arrive. Run Time: 1 hours 53 minutes.'
   },
   {
-    id: 12,
+    id: 3,
     title: "Five Nights at Freddy's 2",
     rating: 'PG-13',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/FiveNightsAtFreddys2.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/dSDpoobO6yM?si=G89UENqWN0mL2kD7'
+    trailer: 'https://youtu.be/dSDpoobO6yM?si=G89UENqWN0mL2kD7',
+    synopsis:
+      'Anyone can survive five nights. This time, there will be no second chances. Run Time: 1 hours 43 minutes.'
   },
   {
-    id: 13,
+    id: 4,
     title: 'Jackstone 5',
     rating: 'PG-13',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/Jackstone-5.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/KmvqpgI-g1c?si=_5j6kzXNy5AERcvj'
+    trailer: 'https://youtu.be/KmvqpgI-g1c?si=_5j6kzXNy5AERcvj',
+    synopsis:
+      'The story of a lifelong friendship between five gay men who reunite after many years apart. It’s a story that many adults can relate to—when life gets busy and you hardly see your friends anymore, but once you do, it feels like no time has passed. You start reminiscing about the good old days, the fun moments, and all the memories you shared together. Run Time: 1 hours 43 minutes.'
   },
   {
-    id: 14,
+    id: 5,
     title: 'JUJUTSU KAISEN: Shibuya Incident×The Culling Game',
     rating: 'PG-13',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/JUJUTSUKAISEN-ShibuyaIncident×TheCullingGame.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/-wkgtm0nsOg?si=THY_4QYHs_HbmPxe'
+    trailer: 'https://youtu.be/-wkgtm0nsOg?si=THY_4QYHs_HbmPxe',
+    synopsis:
+      'A veil abruptly descends over the busy Shibuya area amid the bustling Halloween crowds, trapping countless civilians inside. In the aftermath, ten colonies across Japan are transformed into dens of curses. Run Time: 1 hours 27 minutes.'
   },
   {
-    id: 15,
+    id: 6,
     title: 'MONSTA X: CONNECT X IN CINEMAS',
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/MONSTAX-CONNECTXINCINEMAS.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/eodDzdSNX8U?si=3h2Vvm5S_-djrzRU'
+    trailer: 'https://youtu.be/eodDzdSNX8U?si=3h2Vvm5S_-djrzRU',
+    synopsis:
+      'In July 2025, MONSTA X set the KSPO DOME ablaze over three unforgettable days with their show 2025 MONSTA X CONNECT X. From the powerful live band session and a setlist packed with spectacular performances, to never-before-seen behind-the-scenes footage of the preparation process, and exclusive, heartfelt interviews where the members reflect on their intense 10-year journey—this film captures it all. A chronicle of a decade-long story written together by MONSTA X and MONBEBE. Run Time: 1 hours 57 minutes.'
   },
   {
-    id: 16,
+    id: 7,
     title: 'Nasaan si Hesus?',
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/Nasaansi-Hesus.jpg', import.meta.url).href,
-    trailer: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+    synopsis:
+      'The lives of various individuals in the village of Sto. Nino intertwine as they begin to question the presence and meaning of God in their lives. Roger, his wife Brenda, and their daughter Cindy seem to be a model family, but their faith is questioned when sin and its repercussions begin to affect their home. The Parish Priest, Fr. Carlo, realizes he is prone to anger and temptation, putting to doubt his own spirituality. Sister Remedios, a nun, makes it her mission to help a group of streetchildren, despite the reluctance of the novice Sister Alma. Single mother Lucy’s troubles escalate as she turns to drugs to help support herself and her baby. And other residents have to deal with their selfish employers like Mrs. Varona or opportunistic politicians like Congressman Caramba. In the end, each one tries to find the right path to mend their lives. Run Time: 1 hours 30 minutes.'
   },
   {
-    id: 17,
+    id: 8,
     title: "The Carpenter's Son",
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/The-CarpentersSon.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/aszdL5VFS6Q?si=2wZD6hdtuM-7yUrM'
+    trailer: 'https://youtu.be/aszdL5VFS6Q?si=2wZD6hdtuM-7yUrM',
+    synopsis:
+      "Family hiding in Roman Egypt. Son known as 'the Boy' doubts guardian 'the Carpenter', rebelling with mysterious powers. As he uses abilities, they face natural and divine horrors. Run Time: 1 hours 34 minutes."
   },
   {
-    id: 18,
+    id: 9,
     title: 'The Ghost Village',
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/The-GhostVillage.jpg', import.meta.url).href,
-    trailer: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+      synopsis:
+        "In Kogalok Village, young men are mysteriously found dead in a field once known for lovers' meetings. Village chief Pong investigates and finds no signs of struggle. Only stiff bodies with wide eyes. The villagers suspect a ghost, so Pong calls a shaman for help. They discover the body of a murdered LGBTQ+ woman and realize her revengeful spirit is behind the deaths. Now, Pong must find the killer to stop the haunting and bring peace. Can he solve the mystery? Run Time: 1 hours 39 minutes."
   },
   {
-    id: 19,
+    id: 10,
     title: 'Light of the World',
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/LightOf-TheWorld.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/rGd9zO_lvU4?si=NrIv0hLaygWlbSp8'
+    trailer: 'https://youtu.be/rGd9zO_lvU4?si=NrIv0hLaygWlbSp8',
+    synopsis:
+      "Follows Jesus' life from ministry beginnings through crucifixion, resurrection, as seen through Apostle John's eyes. Run Time: 1 hours 30 minutes."
   },
   {
-    id: 20,
+    id: 11,
     title: 'Scarlet',
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/Scarlet.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/XNar7yF-pf4?si=vQc1Pf0zOXykMg2_'
+    trailer: 'https://youtu.be/XNar7yF-pf4?si=vQc1Pf0zOXykMg2_',
+    synopsis:
+      "A murdered princess awakens in a realm between life and death. Racing against time in a world of chaos, she must defeat her father's killer and reach a mythical sanctuary before her soul vanishes forever. Run Time: 1 hours 51 minutes."
   },
   {
-    id: 21,
+    id: 12,
     title: 'The Incredible Shrinking Man',
     rating: 'PG-13',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/The-IncredibleShrinkingMan.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/dX1E-9jE4bs?si=tht11onjNHTdCRwo'
+    trailer: 'https://youtu.be/dX1E-9jE4bs?si=tht11onjNHTdCRwo',
+    synopsis:
+      'Shipbuilder inexplicably shrinks, gets trapped in basement, few inches tall. Must fight for survival in now-hostile ordinary household environment. Sci-fi premise, no explanation given for shrinking phenomenon. Run Time: 1 hours 38 minutes.'
   },
   {
-    id: 22,
+    id: 13,
     title: 'The Shining 45th Year Anniversary',
     rating: 'R',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/The-Shining45thYearAnniversary.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/RmQPBzJKxcw?si=CeWP_eHv4yfz8o6l'
+    trailer: 'https://youtu.be/RmQPBzJKxcw?si=CeWP_eHv4yfz8o6l',
+    synopsis:
+      'A family heads to an isolated hotel for the winter, where a sinister presence influences the father into violence. At the same time, his psychic son sees horrifying forebodings from both the past and the future. Run Time: 2 hours 25 minutes.'
   },
   {
-    id: 23,
-    title: 'Top Gun: Maverick - Screen X',
-    rating: 'PG-13',
-    price: standardPrice,
-    poster: new URL('../assets/Coming_Soon/TopGun-Maverick-ScreenX.jpg', import.meta.url).href,
-    trailer: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-  },
-  {
-    id: 24,
+    id: 14,
     title: 'Avatar: Fire and Ash',
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/Avatar-FireandAsh.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/zO9GTJotxEQ?si=VjB8Tc7Scc8JEm4z'
+    trailer: 'https://youtu.be/zO9GTJotxEQ?si=VjB8Tc7Scc8JEm4z',
+    synopsis:
+      "Jake and Neytiri's family grapples with grief after Neteyam's death, encountering a new, aggressive Na'vi tribe, the Ash People, who are led by the fiery Varang, as the conflict on Pandora escalates and a new moral focus emerges. Run Time: 3 hours 15 minutes."
   },
   {
-    id: 25,
+    id: 15,
     title: 'Bar Boys: After School',
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/BarBoys-AfterSchool.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/K4fQCnApsW8?si=QWsS4gIiiCybQe1e'
+    trailer: 'https://youtu.be/K4fQCnApsW8?si=QWsS4gIiiCybQe1e',
+    synopsis:
+      '10 years after law school, Torran, Erik, Chris, and Josh face mid-life struggles, burnout, heartbreak, and lost purpose. When they learn that their former mentor Justice Hernandez is gravely ill, they reunite to care for her. Through this, they confront their life choices, rediscover their ideas, and find new meanings as mentors to the next generation. Run Time: 2 hours 00 minutes.'
   },
   {
-    id: 26,
+    id: 16,
     title: 'Call Me Mother',
     rating: 'PG-13',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/CallMe-Mother.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/cSz3TmOmTC0?si=nlWmqJBWqhmcXpmM'
+    trailer: 'https://youtu.be/cSz3TmOmTC0?si=nlWmqJBWqhmcXpmM',
+    synopsis:
+      'Twinkle is a single queer mother whose dream of officially adopting her son gets shaken when the boy’s biological mother, Mara, unexpectedly reappears. Run Time: 2 hours 00 minutes.'
   },
   {
-    id: 27,
+    id: 17,
     title: "I'mPerfect",
     rating: 'PG-13',
     price: standardPrice,
-    poster: new URL(/* @vite-ignore */ '../assets/Coming_Soon/I\'m-Perfect.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/2-HhOL5lYGs?si=yuHP29JSylSoeUKL'
+    poster: new URL(/* @vite-ignore */ '../assets/Coming_Soon/Im-Perfect.jpg', import.meta.url).href,
+    trailer: 'https://youtu.be/2-HhOL5lYGs?si=yuHP29JSylSoeUKL',
+    synopsis:
+      'The story is about Jiro and Jessica, two adults with Down syndrome, who meet, fall in love, and discover the true meaning of freedom and acceptance. As they face life challenges together, their bond grows deeper. But when Jessica falls ill and passes away, Jiro is left cherishing their moments and memories, a reminder of love, acceptance, and being true to oneself. Run Time: 2 hours 00 minutes.'
   },
   {
-    id: 28,
+    id: 18,
     title: 'Love You So Bad',
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/LoveYou-SoBad.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/qSJP7VDCdeQ?si=7-mFioUt-J9EGu0F'
+    trailer: 'https://youtu.be/qSJP7VDCdeQ?si=7-mFioUt-J9EGu0F',
+    synopsis:
+      'Sassy, confident and unapologetically herself, college senior Savannah is determined to live life on her own terms. She finds herself torn between two different men: bad boy and chick magnet L.A. who fuels her wild side, and principled and ambitious Vic who challenges her to grow. As old wounds resurface and difficult choices confront her, she must decide who she really wants to be and who she dares to love. Run Time: 2 hours 00 minutes.'
   },
   {
-    id: 29,
+    id: 19,
     title: "Manila's Finest",
     rating: 'PG',
     price: standardPrice,
-    poster: new URL(/* @vite-ignore */ '../assets/Coming_Soon/Manila\'s-Finest.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/KqWNzDvwPRo?si=g2cAXy2ZFgsjMeEF'
+    poster: new URL(/* @vite-ignore */ '../assets/Coming_Soon/Manilas-Finest.jpg', import.meta.url).href,
+    trailer: 'https://youtu.be/KqWNzDvwPRo?si=g2cAXy2ZFgsjMeEF',
+    synopsis:
+      'Policemen Homer, Conrad, and Billy are consumed by the murder case of troublemaking teenagers in the slums during the first quarter storm in the 1970s. The disappearance of students increases as the gap between the rich and the poor widens. Run Time: 2 hours 00 minutes.'
   },
   {
-    id: 30,
+    id: 20,
     title: 'Rekonek',
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/Rekonek.jpg', import.meta.url).href,
-    trailer: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+    synopsis:
+      'In a multi-genre and multi-narrative movie, Filipinos struggle to enjoy Christmas without the internet. Run Time: 2 hours 00 minutes.'
   },
   {
-    id: 31,
+    id: 21,
     title: 'Shake, Rattle, & Roll: Evil Origins',
     rating: 'PG-13',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/ShakeRattleAndRoll-EvilOrigins.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/A5QQvRaHxDw?si=QIQ3f-egsn22VI3H'
+    trailer: 'https://youtu.be/A5QQvRaHxDw?si=QIQ3f-egsn22VI3H',
+    synopsis:
+      'The "Shake, Rattle, & Roll" franchise takes a unique turn as its three stories will be set in different time periods. In 1775, four women are murdered when a dark force escapes from the strange chest they received from a Spanish ship. In 2025, a Halloween party in an abandoned hotel turns into a horror house scenario as a mysterious killer looms over the partygoers. In 2050, an Aswang rules the Philippines, and a man named Hunter discovers his family may be linked to the chaos. Run Time: 2 hours 00 minutes.'
   },
   {
-    id: 32,
+    id: 22,
     title: 'Unmarry',
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/Unmarry.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/3bLDu6QxdNE?si=p86UJXPTYig_qA6H'
+    trailer: 'https://youtu.be/3bLDu6QxdNE?si=p86UJXPTYig_qA6H',
+    synopsis:
+      'Celine seeks an annulment from her husband, while fighting for the custody of their daughters. Meanwhile, Ivan struggles to save his marriage and their son. Their paths cross at the law office of a lawyer and YouTube host of "Walang Butas Ang Batas". Amid legal battles and chance encounters, Celine and Ivan form an unexpected friendship that helps them heal and rediscover their home. As they grow close, the possibility of finding a new chance at love presents itself. Run Time: 2 hours 00 minutes.'
   },
   {
-    id: 33,
+    id: 23,
     title: 'Anaconda',
     rating: 'PG-13',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/Anaconda.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/az8M5Mai0X4?si=4QsUGcrAL_P6n0HA'
+    trailer: 'https://youtu.be/az8M5Mai0X4?si=4QsUGcrAL_P6n0HA',
+    synopsis:
+      'Doug and Griff have been best friends since they were kids, and have always dreamed of remaking their all-time favorite movie: the cinematic "classic" Anaconda. When a midlife crisis pushes them to finally go for it, they head deep into the Amazon to start filming. But things get real when an actual giant anaconda appears, turning their comically chaotic movie set into a deadly situation. The movie they’re dying to make? It might just get them killed... Run Time: 1 hours 40 minutes.'
   },
   {
-    id: 34,
+    id: 24,
     title: 'A Werewolf Boy',
     rating: 'PG',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/A-WerewolfBoy.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/8ecTDDCfS9g?si=QU_kJx9GuTZ6yMjj'
+    trailer: 'https://youtu.be/8ecTDDCfS9g?si=QU_kJx9GuTZ6yMjj',
+    synopsis:
+      'The story centers on a city girl who moves back to the countryside and forms a unique bond with a mysterious, orphan boy. Run Time: 2 hours 00 minutes.'
   },
   {
-    id: 35,
+    id: 25,
     title: 'The SpongeBob Movie: Search for SquarePants',
     rating: 'G',
     price: standardPrice,
     poster: new URL('../assets/Coming_Soon/TheSpongeBobMovie-SearchforSquarePants.jpg', import.meta.url).href,
-    trailer: 'https://youtu.be/wMfWIu7csjc?si=0jMBo8jxUtkT16U_'
+    trailer: 'https://youtu.be/wMfWIu7csjc?si=0jMBo8jxUtkT16U_',
+    synopsis:
+      'SpongeBob and his Bikini Bottom friends set sail in their biggest, all-new, can’t miss cinematic event ever… The SpongeBob Movie: Search for SquarePants. Desperate to be a big guy, SpongeBob sets out to prove his bravery to Mr. Krabs by following The Flying Dutchman – a mysterious swashbuckling ghost pirate – on a seafaring comedy-adventure that takes him to the deepest depths of the deep sea, where no Sponge has gone before. Run Time: 1 hours 36 minutes.'
   }
 ]
 
