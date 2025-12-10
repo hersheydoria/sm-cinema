@@ -21,6 +21,10 @@
           Trailer not available for this movie.
         </div>
       </div>
+      <div v-if="selectedMovie?.synopsis" class="movie-description">
+        <h3>Synopsis</h3>
+        <p>{{ selectedMovie.synopsis }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -96,13 +100,14 @@ defineExpose({
 
 .modal-content {
   position: relative;
-  background: #1a1a1a;
+  background: #ffffff;
+  color: #0b0b0b;
   border-radius: 8px;
   max-width: 900px;
   width: 90%;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
   animation: slideUp 0.3s ease;
 }
 
@@ -121,9 +126,9 @@ defineExpose({
   position: absolute;
   top: 16px;
   right: 16px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.05);
   border: none;
-  color: white;
+  color: #0b0b0b;
   font-size: 28px;
   cursor: pointer;
   width: 40px;
@@ -137,23 +142,40 @@ defineExpose({
 }
 
 .close-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .modal-header {
   padding: 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .modal-header h2 {
   margin: 0;
-  color: white;
+  color: #0b0b0b;
   font-size: 1.5rem;
 }
 
 .trailer-container {
   padding: 24px;
-  background: #0a0a0a;
+  background: #f8f8f8;
+}
+
+.movie-description {
+  padding: 0 24px 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.movie-description h3 {
+  margin: 16px 0 8px;
+  color: #0b0b0b;
+  font-size: 1.1rem;
+}
+
+.movie-description p {
+  margin: 0;
+  color: #1f1f1f;
+  line-height: 1.5;
 }
 
 .trailer-container iframe {

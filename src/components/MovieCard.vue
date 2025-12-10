@@ -10,7 +10,10 @@
       </div>
     </div>
     <div class="movie-info">
-      <h3 class="movie-title">{{ movie.title }}</h3>
+      <h3 class="movie-title">
+        <span class="movie-title-text">{{ movie.title }}</span>
+        <span v-if="movie.price" class="movie-price">{{ movie.price }}</span>
+      </h3>
       <button class="buy-button" @click="$emit('buy-tickets', movie)">Buy Tickets</button>
     </div>
   </div>
@@ -34,6 +37,9 @@ defineEmits(['buy-tickets', 'watch-trailer'])
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 380px;
 }
 
 .movie-card:hover {
@@ -44,10 +50,10 @@ defineEmits(['buy-tickets', 'watch-trailer'])
 .movie-poster {
   position: relative;
   width: 100%;
-  padding-bottom: 150%;
   overflow: hidden;
   background: #f0f0f0;
   cursor: pointer;
+  height: 230px;
 }
 
 .movie-poster img {
@@ -93,6 +99,10 @@ defineEmits(['buy-tickets', 'watch-trailer'])
 
 .movie-info {
   padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .movie-title {
@@ -102,6 +112,18 @@ defineEmits(['buy-tickets', 'watch-trailer'])
   color: #333;
   line-height: 1.3;
   min-height: 2.6rem;
+}
+
+.movie-title-text {
+  display: inline-block;
+}
+
+.movie-price {
+  display: inline-block;
+  margin-left: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #e63946;
 }
 
 .buy-button {
